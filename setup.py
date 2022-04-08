@@ -5,8 +5,13 @@ import os
 import sys
 from fnmatch import fnmatchcase
 
-from setuptools import convert_path, find_packages, setup
-
+from setuptools import find_packages, setup
+# This is a short-term hack - until we migrate away from this branch and back to a published
+# verison of allauth.
+# distutils is deprecated. Only importing convert_path here as we've had deployment issues
+# due to https://github.com/pypa/setuptools/issues/3201 and pipelines is still using the
+# cached setuptools version which has convert_path removed.
+from distutils.util import convert_path
 
 # Provided as an attribute, so you can append to these instead
 # of replicating them:
